@@ -1,0 +1,6 @@
+ Helper/
+        allure-report/
+        package-lock.json
+        package.json
+        playwright.config.ts
+        tests/
