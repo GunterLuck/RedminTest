@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Fri Feb 17 23:20:03 EET 2023","Fri Feb 17 23:20:11 EET 2023","8276","chromium","redmineTest.spec.ts","5.Test Sign In","","","signin test",""
+"passed","Fri Feb 17 23:20:00 EET 2023","Fri Feb 17 23:20:03 EET 2023","3046","chromium","redmineTest.spec.ts","1.Test main page buttons and text","","","main page buttons and text test",""
+"passed","Fri Feb 17 23:20:03 EET 2023","Fri Feb 17 23:20:10 EET 2023","7438","chromium","redmineTest.spec.ts","4.Test Sign Up","","","signup test",""
+"passed","Fri Feb 17 23:20:00 EET 2023","Fri Feb 17 23:20:04 EET 2023","4431","chromium","redmineTest.spec.ts","3.Test download ","","","download test",""
+"passed","Fri Feb 17 23:20:00 EET 2023","Fri Feb 17 23:20:03 EET 2023","3670","chromium","redmineTest.spec.ts","2.Test search field ","","","search test",""

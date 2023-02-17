@@ -1,0 +1,22 @@
+{
+  "name": "redmie-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test --headed",
+    "test:reports": "playwright test --headed --reporter=line,allure-playwright",
+    "test:report": "npx allure open allure-report",
+    "test:results-clean": "npx allure generate allure-results --clean"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.30.0",
+    "allure-commandline": "^2.21.0"
+  },
+  "dependencies": {
+    "allure-playwright": "^2.0.0"
+  }
+}

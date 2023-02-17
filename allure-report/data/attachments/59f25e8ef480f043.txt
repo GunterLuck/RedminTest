@@ -1,0 +1,12 @@
+true
+true
+true
+true
+true
+true
+true
+true
+true
+https://www.redmine.org/
+Redmine
+Powered by Redmine © 2006-2014 Jean-Philippe Lang
