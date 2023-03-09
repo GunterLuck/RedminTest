@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "playwright test --headed",
-    "test:reports": "playwright test --headed --reporter=line,allure-playwright",
-    "test:report": "npx allure open allure-report",
-    "test:results-clean": "npx allure generate allure-results --clean"
+    "test:run": "playwright test --headed",
+    "test:report": "npx allure serve allure-results",
+    "test:generate": "npx allure generate allure-results --clean"
   },
   "keywords": [],
   "author": "",
