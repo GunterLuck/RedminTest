@@ -5,7 +5,7 @@ export class DownloadPage{
     constructor(page: Page){
         this.allDownloadButtonsLocator = page.locator('[href^="/releases/redmine"]')
     }
-    isClickableDownloadButtons(i) {
+    checkDownloadButtonsClickability(i) {
         return this.allDownloadButtonsLocator.nth(i)
     }
 }

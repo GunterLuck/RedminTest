@@ -11,9 +11,6 @@ export class SearchPage{
     searchResText() {
         return this.searchResultsTextLoc
     }
-    allLinks() {
-        return this.allLinksLoc
-    }
     getLinkFromFirstButton() {
         return this.allLinksLoc.nth(1).getAttribute('href')
     }

@@ -11,16 +11,16 @@ export class SigninPage{
         this.passButtonLoc = page.locator('[name="login"]')
         this.errorMessageLoc = page.locator('#flash_error')
     }
-    async fillRandomUsernameField(randomNameGen) {
-        await this.usernameFieldLoc.fill(randomNameGen)
+    async enterInvalidUsernameField(Name) {
+        await this.usernameFieldLoc.fill(Name)
     }
-    async fillRandomPasswordField(randomPasswordGen) {
-        await this.passwordFieldLoc.fill(randomPasswordGen)
+    async enterInvalidPasswordField(Password) {
+        await this.passwordFieldLoc.fill(Password)
     }
     async clickPassButton() {
         await this.passButtonLoc.click()
     }
-    async isVisibleErrorMessage() {
+    async checkMessageTextVisibility() {
         await this.errorMessageLoc.isVisible()
     }
 }

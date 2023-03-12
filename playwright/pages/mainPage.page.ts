@@ -29,39 +29,35 @@ export class MainPage{
         this.signUpButtonLoc = page.locator('.register')
         this.searchFieldLoc = page.locator('#q')
     }
-    async isClicableOverviewButton() {
+    async checkeOverviewButtonClickability() {
         await this.overviewButtonLocator.click({trial: true })
     }
-    async isClicableDownloadButton() {
+    async checkDownloadButtonClickability() {
         await this.downloadButtonLocator.click({trial: true })
     }
     async clickDownloadButton() {
         await this.downloadButtonLocator.click()
     }
-    async isClicableActivityButton() {
+    async checkActivityButtonClickability() {
         await this.activityButtonLocator.click({trial: true })
     }
-    async isClicableRadmapButton() {
+    async checkeRadmapButtonClickability() {
         await this.roadmapButtonLocator.click({trial: true })
     }
-    async isClicableIssuesButton() {
+    async checkIssuesButtonClickability() {
         await this.issuesButtonLocator.click({trial: true })
     }
-    async isClicableNewsButton() {
+    async checkNewsButtonClickability() {
         await this.newsButtonLocator.click({trial: true })
     }
-    async isClicableWikiButton() {
+    async checkWikiButtonClickability() {
         await this.wikiButtonLocator.click({trial: true })
     }
-    async isClicableBoardsButton() {
+    async checkBoardsButtonClickability() {
         await this.boardsButtonLocator.click({trial: true })
     }
-    async isClicableRepositoryButton() {
+    async checkRepositoryButtonClickability() {
         await this.repositoryButtonLocator.click({trial: true })
-    }
-    async checkRedmineDownTextField() {
-        const RedmineText = this.redmineDownTextField
-        await expect(RedmineText).toHaveText("Powered by Redmine © 2006-2014 Jean-Philippe Lang")
     }
     async clickSignInButton() {
         await this.signinButtonLoc.click()
@@ -69,7 +65,7 @@ export class MainPage{
     async clickSignUpButton() {
         await this.signUpButtonLoc.click()
     }
-    async fillTextInSearchField(randomTextGen) {
+    async enterTextInSearchField(randomTextGen) {
         await this.searchFieldLoc.fill(randomTextGen)
     }
     async pressEnterOnSearchField() {

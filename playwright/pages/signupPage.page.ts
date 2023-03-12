@@ -23,26 +23,26 @@ export class SignupPage{
         this.passButtonLoc = page.locator('[name="commit"]')
         this.messageTextLoc = page.locator('#flash_notice')
     }
-    async fillRandomUserLoginText(randomNameGen) {
-        await this.userLoginFieldLoc.fill(randomNameGen)
+    async enterValidUserLoginText(Name) {
+        await this.userLoginFieldLoc.fill(Name)
     }
-    async fillRandomUserPasswordText(randomPasswordGen) {
-        await this.userPasswordFieldLoc.fill(randomPasswordGen)
+    async enterValidUserPasswordText(Password) {
+        await this.userPasswordFieldLoc.fill(Password)
     }
     userPasswordField(){
         return this.userPasswordFieldLoc
     }
-    async fillUserPasswordPassText(password) {
+    async enterValidPasswordPassText(password) {
         await this.userPasswordPassFieldLoc.fill(password)
     }
-    async fillRandomUserNameText(randomNameGen) {
-        await this.userNameFieldLoc.fill(randomNameGen)
+    async enterValidUserNameText(Name) {
+        await this.userNameFieldLoc.fill(Name)
     }
-    async fillRandomUserLastnameText(randomNameGen) {
-        await this.userLastnameFieldLoc.fill(randomNameGen)
+    async enterValidUserLastnameText(Name) {
+        await this.userLastnameFieldLoc.fill(Name)
     }
-    async fillRandomUserMailText(randomEmailGen) {
-        await this.userMailFieldLoc.fill(randomEmailGen)
+    async enterValidUserMailText(Email) {
+        await this.userMailFieldLoc.fill(Email)
     }
     async clickLanguageButton() {
         await this.languageButtonLoc.click()
@@ -53,7 +53,7 @@ export class SignupPage{
     async clickPassButton() {
         await this.passButtonLoc.click()
     }
-    async isVisibleMessageText() {
+    async checkMessageTextVisibility() {
         await this.messageTextLoc.isVisible()
     }
 }

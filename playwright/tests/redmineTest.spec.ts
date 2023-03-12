@@ -6,79 +6,82 @@ import { DownloadPage } from '../pages/downloadPage.page';
 import { SignupPage } from '../pages/signupPage.page';
 import { SigninPage } from '../pages/signinPage.page';
 
-let mainPageLoc: MainPage
+let mainPage: MainPage
 let textGenerator: TextGeneratorHelper
-let searchFieldTestLoc: SearchPage
-let downloadPageLoc: DownloadPage
-let signUpLoc: SignupPage
-let signInLoc: SigninPage
+let searchPage: SearchPage
+let downloadPage: DownloadPage
+let signUpPage: SignupPage
+let signInPage: SigninPage
+let Name
+let Password
+let Email
+let Text
+let testText
 
 test.beforeEach(async ({ page }) => {
     await page.goto('https://www.redmine.org/');
-        mainPageLoc = new MainPage(page)
+        mainPage = new MainPage(page)
         textGenerator = new TextGeneratorHelper()
-        searchFieldTestLoc = new SearchPage(page)
-        downloadPageLoc = new DownloadPage(page)
-        signUpLoc = new SignupPage(page) 
-        signInLoc = new SigninPage(page)
+        searchPage = new SearchPage(page)
+        downloadPage = new DownloadPage(page)
+        signUpPage = new SignupPage(page) 
+        signInPage = new SigninPage(page)
+        Name = textGenerator.randomName()
+        Password = textGenerator.randomPassword()
+        Email = textGenerator.randomEmail()
+        Text = textGenerator.randomText()
+        testText = textGenerator.testSerchText()
 });
 test.describe('Test cases', () => {
     test('1) Main menu buttons clickability test', async () => {
-        await mainPageLoc.isClicableOverviewButton()
-        await mainPageLoc.isClicableDownloadButton()
-        await mainPageLoc.isClicableActivityButton()
-        await mainPageLoc.isClicableRadmapButton()
-        await mainPageLoc.isClicableIssuesButton()
-        await mainPageLoc.isClicableNewsButton()
-        await mainPageLoc.isClicableWikiButton()
-        await mainPageLoc.isClicableBoardsButton()
-        await mainPageLoc.isClicableRepositoryButton()
+        await mainPage.checkeOverviewButtonClickability()
+        await mainPage.checkDownloadButtonClickability()
+        await mainPage.checkActivityButtonClickability()
+        await mainPage.checkeRadmapButtonClickability()
+        await mainPage.checkIssuesButtonClickability()
+        await mainPage.checkNewsButtonClickability()
+        await mainPage.checkWikiButtonClickability()
+        await mainPage.checkBoardsButtonClickability()
+        await mainPage.checkRepositoryButtonClickability()
     })
     test('2) Test search field with zero results', async () => {
-        const randomTextGen = textGenerator.randomText()
-        await mainPageLoc.fillTextInSearchField(randomTextGen)
-        await mainPageLoc.pressEnterOnSearchField()
-        const resultsText = searchFieldTestLoc.searchResText()
+        await mainPage.enterTextInSearchField(Text)
+        await mainPage.pressEnterOnSearchField()
+        const resultsText = searchPage.searchResText()
         await expect(resultsText).toContainText("Results (0)")
     })
     test('3) Test search field with results, and check the first link for a match ', async ({ page }) => {
-        const testText = textGenerator.testSerchText()
-        await mainPageLoc.fillTextInSearchField(testText)
-        await mainPageLoc.pressEnterOnSearchField()
-        const linkUrl = await searchFieldTestLoc.getLinkFromFirstButton()
-        await searchFieldTestLoc.clickFirstLink()
+        await mainPage.enterTextInSearchField(testText)
+        await mainPage.pressEnterOnSearchField()
+        const linkUrl = await searchPage.getLinkFromFirstButton()
+        await searchPage.clickFirstLink()
         await expect(page).toHaveURL('https://www.redmine.org' + linkUrl);
     })
     test('4) 4 main download buttons clickability test', async () => {
-        await mainPageLoc.clickDownloadButton()
+        await mainPage.clickDownloadButton()
         for (let i = 0; i < 4; i++){
-            await downloadPageLoc.isClickableDownloadButtons(i).click({trial: true })
+            await downloadPage.checkDownloadButtonsClickability(i).click({trial: true })
         }
     })
     test('5) Test Sign Up with valid values', async () => {
-        await mainPageLoc.clickSignUpButton()
-        const randomNameGen = textGenerator.randomName()
-        const randomPasswordGen = textGenerator.randomPassword()
-        const randomEmailGen = textGenerator.randomEmail()
-        await signUpLoc.fillRandomUserLoginText(randomNameGen)
-        await signUpLoc.fillRandomUserPasswordText(randomPasswordGen)
-        const password = await signUpLoc.userPasswordField().inputValue()
-        await signUpLoc.fillUserPasswordPassText(password)
-        await signUpLoc.fillRandomUserNameText(randomNameGen)
-        await signUpLoc.fillRandomUserLastnameText(randomNameGen)
-        await signUpLoc.fillRandomUserMailText(randomEmailGen)
-        await signUpLoc.clickLanguageButton()
-        await signUpLoc.clickLanguageEngButton()
-        await signUpLoc.clickPassButton()
-        await signUpLoc.isVisibleMessageText()
+        await mainPage.clickSignUpButton()
+        await signUpPage.enterValidUserLoginText(Name)
+        await signUpPage.enterValidUserPasswordText(Password)
+        const password = await signUpPage.userPasswordField().inputValue()
+        await signUpPage.enterValidPasswordPassText(password)
+        await signUpPage.enterValidUserNameText(Name)
+        await signUpPage.enterValidUserLastnameText(Name)
+        await signUpPage.enterValidUserMailText(Email)
+        await signUpPage.clickLanguageButton()
+        await signUpPage.clickLanguageEngButton()
+        await signUpPage.clickPassButton()
+        await signUpPage.checkMessageTextVisibility()
     })
     test('6) Test Sign In with negative scenario', async () => {
-        await mainPageLoc.clickSignInButton()
-        const randomNameGen = textGenerator.randomName()
-        const randomPasswordGen = textGenerator.randomPassword()
-        await signInLoc.fillRandomUsernameField(randomNameGen)
-        await signInLoc.fillRandomPasswordField(randomPasswordGen)
-        await signInLoc.clickPassButton()
-        await signInLoc.isVisibleErrorMessage()
+        await mainPage.clickSignInButton()
+        await signInPage.enterInvalidUsernameField(Name)
+        await signInPage.enterInvalidPasswordField(Password)
+        await signInPage.clickPassButton()
+        await signInPage.checkMessageTextVisibility()
     })
 })
